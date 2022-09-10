@@ -54,13 +54,15 @@ export default function Navigation({actionButton}) {
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
-                <div className="flex-shrink-0">
-                  <Link href={actionButton.url}>
-                    <a className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                      {actionButton.text}
-                    </a>
-                  </Link>
-                </div>
+                { actionButton &&
+                  <div className="flex-shrink-0">
+                    <Link href={actionButton.url}>
+                      <a className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        {actionButton.text}
+                      </a>
+                    </Link>
+                  </div>
+                }
 
                 <button
                   type="button"

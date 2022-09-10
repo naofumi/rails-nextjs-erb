@@ -27,6 +27,24 @@
 // a generic manner. apiGetProps() aims to do all the boring error handling
 // and just provide the results after a successful request -- it only
 // sends back what your code is interested in.
+//
+// Example
+// ===================
+//   return apiGetProps({
+//     context: context,
+//     url: `http://web:3000/api/categories/${context.params.cid}`,
+//     options: {},
+//     success: (response, category) => {
+//       return {
+//         props: {
+//           category,
+//           breadcrumbs,
+//           actionButton: {url: `/categories/${context.params.cid}/edit`, text: "Edit Category"}
+//         }
+//       }
+//     }
+//   })
+
 export default async function apiGetProps({context, url, options = {}, success}) {
   const apiHeaders = apiRequestHeaders(context)
 
@@ -57,6 +75,85 @@ export default async function apiGetProps({context, url, options = {}, success})
   }
 }
 
+// Asynchronously fetch from multiple APIs and send
+// json results to the `success` callback.
+//
+// Acting as a pass-through
+// ===============
+// This acts in much the same way as `apiGetProps` above.
+// We may need further discussion on how the API server's headers are
+// sent back to the browser via `setBrowserResponseHeaders`. With the
+// current implementation, we are sending back all headers from all the
+// API servers to the browser which seems unnecessary and potentially
+// harmful, especially regarding caching.
+//
+// Managing errors
+// ===================
+//
+// Error handing is similar to `apiGetProps` above. If any of the requests
+// returns a non 200 status, then error handling is called.
+//
+// Example
+// =====================
+// return apiGetMuliple({
+//   context: context,
+//   requests: [
+//     {url: "http://web:3000/api/categories", options: {}},
+//     {url: "http://web:3000/api/frameworks", options: {}},
+//   ],
+//   success: (jsonResponses) => {
+//     const [categories, frameworks] = jsonResponses
+//     return {
+//       props: {
+//         categories: categories,
+//         frameworks: frameworks,
+//         breadcrumbs,
+//         actionButton: {url: `/categories/${context.params.cid}/edit`, text: "Edit Category"}
+//       }
+//     }
+//   }
+// })
+//
+export async function apiGetMultiple({context, requests, success}) {
+  const apiHeaders = apiRequestHeaders(context)
+
+  const jsonPromises = requests.map(async ({url, options}) => {
+    const response = await fetch(url, { headers: apiHeaders, ...options })
+
+    if (response.status == 200) {
+      const headers = await response.headers
+      const json = await response.json()
+
+      setBrowserResponseHeaders(headers, context)
+
+      return json
+    } else {
+      return {errorStatus: response.status}
+    }
+  })
+
+  const jsonResponses = await Promise.all(jsonPromises)
+
+  if (jsonResponses.every((jr) => !jr.errorStatus)) {
+    return success(jsonResponses)
+  } else if (jsonResponses.some((jr) => jr.errorStatus == 401)) {
+    return {
+      redirect: {
+        destination: '/users/login',
+        permanent: false,
+      },
+   }
+  } else if (jsonResponses.some((jr) => jr.errorStatus == 404)) {
+    return {
+      notFound: true
+    }
+  } else {
+    return {
+      notFound: true
+    }
+  }
+}
+
 function apiRequestHeaders(context) {
   // use spread assignment to remove any headers that you
   // do not want to pass through.
@@ -74,42 +171,4 @@ function setBrowserResponseHeaders(headers, context) {
 
     context.res.setHeader(key, value)
   })
-}
-
-// Experiments to asynchronously fetch from multiple APIs and
-// aggregate the results.
-//
-// I'm considering an API like the following
-//
-// const [categories, frameworks] = await apiGetMuliple({
-//   context: context,
-//   requests: [
-//     {url: "http://web:3000/api/categories", options: {}},
-//     {url: "http://web:3000/api/frameworks", options: {}},
-//   ]
-// })
-//
-// Essentially, the consumer of the API simply specifies the API endpoints
-// and receives the results as JSON.
-//
-// Error handling may be a bit complicated. I would prefer to keep error
-// handling out of the controller code, but it may not be possible.
-// In case of an error from one of the APIs, we want the remainder of the
-// API set to still run and return results. The API with an error can simply
-// return null or an error message.
-//
-// Points to consider
-// 1. We want to be able to do as much eager fetching as a GraphQL protocol.
-//    Understand how GraphQL works, especially under the hood.
-// 2. I want to understand how this method is better than designing the back-end
-//    to handle GraphQL requests. I want to understand how multiple generic REST-APIs
-//    aggregated by an API gateway can end up being a better solution than
-//    implementing a GraphQL API on the Rails server.
-export async function apiTest(context) {
-  const apiHeaders = apiRequestHeaders(context)
-
-  const categories = fetch("http://web:3000/api/categories", { headers: apiHeaders }).then((res) => res.json())
-  const frameworks = fetch("http://web:3000/api/frameworks", { headers: apiHeaders }).then((res) => res.json())
-
-  return Promise.all([categories, frameworks]);
 }
