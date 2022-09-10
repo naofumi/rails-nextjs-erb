@@ -1,0 +1,18 @@
+<%
+ActiveStorage::FixtureSet.file_fixture_path = Rails.root.join('test/fixtures/active_storage/files')
+%>
+rails_logo: <%= ActiveStorage::FixtureSet.blob filename: "rails-logo.png" %>
+
+cakephp_logo: <%= ActiveStorage::FixtureSet.blob filename: "cakephp-logo.png" %>
+
+laravel_logo: <%= ActiveStorage::FixtureSet.blob filename: "laravel-logo.png" %>
+
+django_logo: <%= ActiveStorage::FixtureSet.blob filename: "django-logo.png" %>
+
+catalyst_logo: <%= ActiveStorage::FixtureSet.blob filename: "catalyst-logo.png" %>
+
+blitz_logo: <%= ActiveStorage::FixtureSet.blob filename: "blitz-logo.png" %>
+
+nextjs_logo: <%= ActiveStorage::FixtureSet.blob filename: "nextjs-logo.jpg" %>
+
+remix_logo: <%= ActiveStorage::FixtureSet.blob filename: "remix-logo.jpg" %>

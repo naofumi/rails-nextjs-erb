@@ -1,0 +1,52 @@
+<% @breadcrumbs = [@category] %>
+<% content_for :edit_button, edit_button(@category) %>
+
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="bg-white">
+  <div class="max-w-7xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-lg font-semibold text-indigo-600"><%= @category.name %></h2>
+      <p class="mt-1 text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl lg:text-6xl"><%= @category.name %></p>
+      <div class="max-w-xl mt-5 mx-auto text-xl text-gray-500"><%= markdown @category.description %></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- This example requires Tailwind CSS v2.0+ -->
+<ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  <% @category.frameworks.each do |fw| %>
+    <li class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
+      <div class="flex-1 flex flex-col p-8">
+        <% if fw.header_image&.representable? %>
+          <%= image_tag fw.header_image.representation(resize_to_limit: [500, 500]), class: "w-32 h-32 flex-shrink-0 mx-auto rounded-full", size: "256x256" %>
+        <% end %>
+        <h3 class="mt-6 text-gray-900 text-sm font-medium"><%= fw.name %></h3>
+        <dl class="mt-1 flex-grow flex flex-col justify-between">
+          <dt class="sr-only">Description</dt>
+          <dd class="text-gray-500 text-sm"><%= markdown fw.headline %></dd>
+          <dt class="sr-only">Category</dt>
+          <dd class="mt-3">
+            <span class="px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full"><%= fw.category.name %></span>
+          </dd>
+        </dl>
+      </div>
+      <div>
+        <div class="-mt-px flex divide-x divide-gray-200  bg-gray-400 shadow-sm hover:bg-gray-500 focus:outline-none">
+          <div class="-ml-px w-0 flex-1 flex">
+            <%= link_to fw, class: "relative w-0 flex-1 inline-flex items-center "\
+                                   "justify-center py-4 text-sm text-white "\
+                                   "font-medium border border-transparent "\
+                                   "rounded-br-lg" do %>
+              <!-- Heroicon name: face/smile -->
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+              </svg>
+              <span class="ml-3">詳しく見てみよう！</span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

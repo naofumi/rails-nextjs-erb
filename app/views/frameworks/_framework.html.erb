@@ -1,0 +1,69 @@
+<div id="<%= dom_id framework %>">
+  <!-- This example requires Tailwind CSS v2.0+ -->
+  <div class="bg-white">
+    <div class="max-w-2xl mx-auto py-12 px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8 lg:grid-cols-2">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"><%= framework.name %></h2>
+        <div class="mt-4 text-gray-900 font-bold">
+          <%= markdown framework.headline %>
+        </div>
+        <div class="mt-4 text-gray-500">
+          <%= markdown framework.description %>
+        </div>
+
+        <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+          <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium text-gray-900">Original Creators</dt>
+            <dd class="mt-2 text-sm text-gray-500">
+              <%= framework.original_creators %>
+            </dd>
+          </div>
+
+          <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium text-gray-900">Source Code</dt>
+            <dd class="mt-2 text-sm text-gray-500">
+              <%= link_to framework.source_code_url %>
+            </dd>
+          </div>
+
+          <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium text-gray-900">Programming Language</dt>
+            <dd class="mt-2 text-sm text-gray-500">
+              <%= framework.languages %>
+            </dd>
+          </div>
+
+          <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium text-gray-900">Related Technologies</dt>
+            <dd class="mt-2 text-sm text-gray-500">
+              <%= framework.related_technologies %>
+            </dd>
+          </div>
+
+          <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium text-gray-900">Release year</dt>
+            <dd class="mt-2 text-sm text-gray-500">
+              <%= framework.release_year %>
+              (<%= Time.zone.now.year - framework.release_year %> years ago)
+            </dd>
+          </div>
+
+          <div class="border-t border-gray-200 pt-4">
+            <dt class="font-medium text-gray-900">Usage statistics</dt>
+            <dd class="mt-2 text-sm text-gray-500">
+              <%= link_to framework.usage_statistics_url %>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
+        <% framework.images.each.with_index do |image, i| %>
+          <% if image.representable? %>
+            <%= framework_image image.representation(resize_to_limit: [500, 500]), "Remix image #{i}" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

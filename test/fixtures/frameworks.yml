@@ -1,0 +1,126 @@
+rails:
+  name: Ruby on Rails
+  original_creators: David Heinemeier Hansson
+  website: https://rubyonrails.org
+  languages: Ruby, Javascript
+  release_year: 2004
+  source_code_url: https://github.com/rails/rails
+  related_technologies: Merb
+  usage_statistics_url: https://trends.builtwith.com/framework/Ruby-on-Rails-Token
+  headline: |
+    Compress the complexity of modern web apps.
+  description: |
+    Learn just what you need to get started, then keep leveling up as you go.
+    Ruby on Rails scales from HELLO WORLD to IPO.
+  category: fullstack
+
+cake_php:
+  name: CakePHP
+  original_creators: Michal Tatarynowicz
+  website: https://cakephp.org/
+  languages: PHP
+  release_year: 2005
+  source_code_url: https://github.com/cakephp/cakephp
+  related_technologies:
+  usage_statistics_url: https://trends.builtwith.com/framework/CakePHP
+  headline: |
+    Build fast, grow solid.
+  description: |
+    Prototype faster, Validate faster, Grow consistently.
+  category: fullstack
+
+laravel:
+  name: Laravel
+  original_creators: Taylor Otwell
+  website: https://laravel.com
+  languages: PHP
+  release_year: 2011
+  source_code_url: https://github.com/laravel/framework
+  related_technologies: Symphony
+  usage_statistics_url: https://trends.builtwith.com/framework/Laravel
+  headline: |
+    The PHP Framework for Web Artisans
+  description: |
+    Laravel is a web application framework with expressive, elegant syntax.
+    We’ve already laid the foundation — freeing you to create without sweating the small things.
+  category: fullstack
+
+django:
+  name: Django
+  original_creators: Adrian Holovaty, Simon Willison
+  website: https://www.djangoproject.com/
+  languages: Python
+  release_year: 2005
+  source_code_url: https://github.com/django/django
+  related_technologies:
+  usage_statistics_url: https://trends.builtwith.com/framework/Django-CSRF
+  headline: |
+    The The web framework for perfectionists with deadlines.
+  description: |
+    Django makes it easier to build better web apps more quickly and with less code.
+  category: fullstack
+
+catalyst:
+  name: Catalyst
+  original_creators:
+  website: http://catalyst.perl.org
+  languages: Perl
+  release_year: 2005
+  source_code_url: https://metacpan.org/pod/Catalyst::Runtime
+  related_technologies: Maypole
+  usage_statistics_url:
+  headline: |
+    Turbocharge your web development!
+  description: |
+    Catalyst is the most popular Perl MVC framework and makes creating web applications fun, rewarding and quick.
+  category: fullstack
+
+nextjs:
+  name: Next.js
+  original_creators: Vercel
+  website: https://nextjs.org
+  languages: Javascript
+  release_year: 2016
+  source_code_url: https://github.com/vercel/next.js
+  usage_statistics_url: https://trends.builtwith.com/framework/Next.js
+  headline: |
+    The React Framework for Production
+  description: |
+    Next.js gives you the best developer experience with all the features you need for production:
+    hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
+    No config needed.
+  category: frontend
+
+remix:
+  name: Remix
+  original_creators: Micheal Jackson, Ryan Florence
+  website: https://remix.run
+  languages: Javascript
+  release_year: 2021
+  source_code_url: https://github.com/remix-run
+  usage_statistics_url: https://trends.builtwith.com/framework/Remix
+  headline: |
+    Focused on web standards and modern web app UX, you’re simply going to build better websites
+  description: |
+    Remix is a full stack web framework that lets you focus on the user interface and work back through web standards to deliver a fast, slick, and resilient user experience. People are gonna love using your stuff.
+  category: frontend
+
+blitz:
+  name: Blitz
+  original_creators: Brandon Bayer
+  website: https://blitzjs.com
+  languages: Javascript
+  release_year: 2021
+  source_code_url: https://github.com/blitz-js/blitz
+  usage_statistics_url:
+  headline: |
+    The Missing Fullstack Toolkit for Next.js
+  description: |
+    Ship. Fast.
+    Blitz picks up where Next.js leaves off, providing battle-tested libraries and conventions for shipping and scaling world wide applications.
+  category: fullstack
+
+
+
+
+

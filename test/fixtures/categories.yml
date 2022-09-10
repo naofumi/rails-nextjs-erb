@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+fullstack:
+  name: Fullstack web frameworks
+  description: |
+    Frameworks that focus on receiving data externally and generating HTML
+    that browsers can directly display. They may run on either the browser or on a server.
+
+frontend:
+  name: Frontend web frameworks
+  description: |
+    Frameworks that cover generating data from a database hosted in a shared location and
+    generating HTML that browsers can directly display.
+
+

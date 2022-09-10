@@ -1,0 +1,42 @@
+# Framework header_image
+rails_logo:
+  name: header_image
+  record: rails (Framework)
+  blob: rails_logo
+
+cakephp_logo:
+  name: header_image
+  record: cake_php (Framework)
+  blob: cakephp_logo
+
+laravel_logo:
+  name: header_image
+  record: laravel (Framework)
+  blob: laravel_logo
+
+django_logo:
+  name: header_image
+  record: django (Framework)
+  blob: django_logo
+
+catalyst_logo:
+  name: header_image
+  record: catalyst (Framework)
+  blob: catalyst_logo
+
+blitz_logo:
+  name: header_image
+  record: blitz (Framework)
+  blob: blitz_logo
+
+nextjs_logo:
+  name: header_image
+  record: nextjs (Framework)
+  blob: nextjs_logo
+
+remix_logo:
+  name: header_image
+  record: remix (Framework)
+  blob: remix_logo
+
+

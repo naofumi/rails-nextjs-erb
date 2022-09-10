@@ -1,0 +1,11 @@
+<% @breadcrumbs = [@framework.category, @framework] %>
+<% content_for :edit_button, edit_button(@framework) %>
+
+<%= render @framework %>
+
+<div>
+  <%= link_to "Edit this framework", edit_framework_path(@framework) %> |
+  <%= link_to "Back to frameworks", frameworks_path %>
+
+  <%= button_to "Destroy this framework", @framework, method: :delete %>
+</div>

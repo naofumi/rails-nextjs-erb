@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Frameworks</h1>
+
+<div id="frameworks">
+  <% @frameworks.each do |framework| %>
+    <%= render framework %>
+    <p>
+      <%= link_to "Show this framework", framework %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New framework", new_framework_path %>

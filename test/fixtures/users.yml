@@ -1,0 +1,12 @@
+DEFAULTS: &DEFAULTS
+  encrypted_password: <%= User.new.send(:password_digest, 'hoge1234') %>
+
+sazae:
+  email: sazae@example.com
+  name: Sazae Fuguta
+  <<: *DEFAULTS
+
+Katsuo:
+  email: katsuo@example.com
+  name: Kasuo Isono
+  <<: *DEFAULTS

@@ -1,0 +1,56 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+      LANG: C.UTF-8
+      TZ: Asia/Tokyo
+
+  # If you want to use MySQL
+  # db:
+  #   image: mysql/mysql-server
+  #   volumes:
+  #     - db-data:/var/lib/mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_ROOT_HOST: '%'
+  #     TZ: Asia/Tokyo
+  #     LANG: C.UTF-8
+  #   ports:
+  #     - '4306:3306'
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+      - gem_data:/usr/local/bundle:delegated
+    ports:
+      - "3001:3000"
+    depends_on:
+      - db
+    stdin_open: true
+    tty: true
+
+  next:
+    build: nextjs/.
+    command: yarn dev
+    # command: node server.js
+    # command: yarn start
+    volumes:
+      - ./nextjs:/app
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - web
+
+
+volumes:
+  db-data:
+  gem_data:
+
