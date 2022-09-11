@@ -1,4 +1,4 @@
-# Rails - Next.js
+# Rails - Next.js - ERB
 
 ## Motivation
 
