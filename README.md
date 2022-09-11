@@ -8,6 +8,11 @@ The aim is to enable the developer to easily transition between a Next.js front-
 
 This capability should enable the developer to gradually transition a website built with ERB technology to one based on React, or vice versa. Instead of a "Big-bang" style release, the developer can release each page as it is ready, one by one.
 
+## Video
+
+Watch me demo this project!! (in Japanese)
+https://www.youtube.com/watch?v=KozETP3OpYA
+
 ## Wiki
 
 See the wiki to set up the demo, how to convert an existing Ruby on Rails ERB website to React, and to learn more about this project.
