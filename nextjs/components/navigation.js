@@ -41,11 +41,6 @@ export default function Navigation({actionButton}) {
                       Categories
                     </a>
                   </Link>
-                  <Link href="/frameworks">
-                    <a className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">
-                      Frameworks
-                    </a>
-                  </Link>
                   <Link href= "/about">
                     <a className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                       About
