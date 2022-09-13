@@ -32,7 +32,7 @@
 // ===================
 //   return apiGetProps({
 //     context: context,
-//     url: `http://web:3000/api/categories/${context.params.cid}`,
+//     url: `http://web:3000/categories/${context.params.cid}`,
 //     options: {},
 //     success: (response, category) => {
 //       return {
@@ -98,8 +98,8 @@ export default async function apiGetProps({context, url, options = {}, success})
 // return apiGetMuliple({
 //   context: context,
 //   requests: [
-//     {url: "http://web:3000/api/categories", options: {}},
-//     {url: "http://web:3000/api/frameworks", options: {}},
+//     {url: "http://web:3000/categories", options: {}},
+//     {url: "http://web:3000/frameworks", options: {}},
 //   ],
 //   success: (jsonResponses) => {
 //     const [categories, frameworks] = jsonResponses

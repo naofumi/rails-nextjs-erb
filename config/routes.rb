@@ -10,12 +10,6 @@ Rails.application.routes.draw do
 
   get 'csrf', to: 'users#csrf', as: :csrf
 
-  scope '/api', as: 'api', constraints: {format: 'application/json'} do
-    resources :categories
-    resources :users
-    resources :frameworks
-  end
-
   resources :users
   resources :categories
   resources :frameworks

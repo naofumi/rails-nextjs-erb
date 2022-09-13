@@ -50,7 +50,7 @@ export default function NewCategory () {
       <div className="errors text-rose-600">
         {errors.map((error) => error)}
       </div>
-      <form onSubmit={handleSubmit} action="/api/categories" method="POST">
+      <form onSubmit={handleSubmit} action="/categories" method="POST">
         <CsrfToken />
         <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
           <div className="space-y-6 pt-8 sm:space-y-5 sm:pt-10">

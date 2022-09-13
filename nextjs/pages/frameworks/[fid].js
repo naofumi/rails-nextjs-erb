@@ -8,7 +8,7 @@ export async function getServerSideProps (context) {
 
   return apiGetProps({
     context: context,
-    url: `http://web:3000/api/frameworks/${context.params.fid}`,
+    url: `http://web:3000/frameworks/${context.params.fid}`,
     options: {},
     success: (response, framework) => {
       return {

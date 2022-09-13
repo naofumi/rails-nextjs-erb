@@ -5,8 +5,8 @@ export async function getServerSideProps (context) {
   return apiGetMultiple({
     context: context,
     requests: [
-      {url: "http://web:3000/api/categories", options: {}},
-      {url: "http://web:3000/api/frameworks", options: {}},
+      {url: "http://web:3000/categories", options: {}},
+      {url: "http://web:3000/frameworks", options: {}},
     ],
     success: (jsonResponses) => {
       const [categories, frameworks] = jsonResponses

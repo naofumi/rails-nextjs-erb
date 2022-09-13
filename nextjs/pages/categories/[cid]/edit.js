@@ -11,7 +11,7 @@ export async function getServerSideProps (context) {
 
   return apiGetProps({
     context: context,
-    url: `http://web:3000/api/categories/${context.params.cid}`,
+    url: `http://web:3000/categories/${context.params.cid}`,
     options: {},
     success: (response, category) => {
       return {
@@ -49,7 +49,7 @@ export default function EditCategory ({category, breadcrumbs, actionButton}) {
       <div className="errors text-rose-600">
         {errors.map((error) => error)}
       </div>
-      <form onSubmit={handleSubmit} action={`/api/categories/${category.id}`} method="PUT">
+      <form onSubmit={handleSubmit} action={`/categories/${category.id}`} method="PUT">
         <CsrfToken />
         <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
           <div className="space-y-6 pt-8 sm:space-y-5 sm:pt-10">
