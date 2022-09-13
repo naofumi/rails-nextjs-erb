@@ -2,7 +2,7 @@ import CsrfToken from '/components/csrf_token'
 import Application from '/components/layout/application'
 import Link from 'next/link'
 import { submitForm } from '/lib/submit_api'
-import apiGetProps from '/lib/get_api'
+import { apiGetProps } from '/lib/get_api'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 

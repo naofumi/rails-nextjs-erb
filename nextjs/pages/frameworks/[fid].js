@@ -1,5 +1,5 @@
 import Application from '/components/layout/application'
-import apiGetProps from '/lib/get_api'
+import { apiGetProps } from '/lib/get_api'
 import Link from 'next/link'
 import { showLoader } from '/components/loader'
 

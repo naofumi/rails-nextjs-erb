@@ -1,6 +1,6 @@
 import Application from '/components/layout/application'
 import Category from '/components/category'
-import apiGetProps from '/lib/get_api'
+import { apiGetProps } from '/lib/get_api'
 
 export async function getServerSideProps (context) {
   return apiGetProps({

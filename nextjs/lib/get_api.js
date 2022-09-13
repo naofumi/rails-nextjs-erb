@@ -1,32 +1,22 @@
-// Send an API request to the BE with context received from the browser.
-//
-// Acting as a pass-through
+// Send a GET API requests to the API server and send results
+// to the `success` callback
 // =================
 //
-// "context" refers to the headers and cookies that were sent to
-// the BFF (backend for frontend -- NextJS). Namely, the request headers.
+// When sending a request to the API server, all headers received from
+// the browser will be relayed, as is, to the API server with the following exceptions.
 //
-// Also on receiving a response from the BE, return the new context
-// to the browser by means of the response headers. Namely, the response headers.
+// 1. The "Accept:" header will be set to "application/json"
 //
-// Although this generally passes-through the headers as is,
-// there are a couple of exceptions.
+// When receiving a response from the API server, all headers received from
+// the API server will be relayed, as is, to the Browser.
 //
-// 1. The request to the BE will be sent to accept: 'application/json'
-// 2. The response header 'content-type' will be ignored. -- this will be
-//    set by NextJS and will be 'text/html' for SSR and something else
-//    when CSR. It is up to NextJS to determine.
-// 3. The response header 'content-encoding' will also be ignored. -- this
-//    typically mentions gzip compression. In some cases, this caused problems
-//    in the browser.
+// 1. The "content-type" header will not ignored and will not be sent to the browser.
+// 1. The "content-encoding" header will be ignored and will not be sent to the browser.
 //
 // Managing errors
 // =====================
 //
-// Error handling is mostly common to every endpoint and should be handled in
-// a generic manner. apiGetProps() aims to do all the boring error handling
-// and just provide the results after a successful request -- it only
-// sends back what your code is interested in.
+// Errors are handled inside `apiGetProps()`.
 //
 // Example
 // ===================
@@ -44,7 +34,6 @@
 //       }
 //     }
 //   })
-
 export default async function apiGetProps({context, url, options = {}, success}) {
   const apiHeaders = apiRequestHeaders(context)
 
@@ -77,21 +66,18 @@ export default async function apiGetProps({context, url, options = {}, success})
 
 // Asynchronously fetch from multiple APIs and send
 // json results to the `success` callback.
+// ===============
 //
 // Acting as a pass-through
 // ===============
-// This acts in much the same way as `apiGetProps` above.
-// We may need further discussion on how the API server's headers are
-// sent back to the browser via `setBrowserResponseHeaders`. With the
-// current implementation, we are sending back all headers from all the
-// API servers to the browser which seems unnecessary and potentially
-// harmful, especially regarding caching.
+// This acts in much the same way as `apiGetProps` above. Note that the
+// headers from each API are combined. We may need to change this in the future.
 //
 // Managing errors
 // ===================
 //
-// Error handing is similar to `apiGetProps` above. If any of the requests
-// returns a non 200 status, then error handling is called.
+// Error handing is similar to `apiGetProps` above and is managed within the
+// apiGetMultiple() function.
 //
 // Example
 // =====================

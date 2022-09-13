@@ -2,7 +2,7 @@
 // ========
 //
 // This file provides a `CsrfToken` component. This component
-// sends a GET request to the `/csrf` endpoint on load. If the GET request
+// sends a GET request to the `/csrf` endpoint when loaded. If the GET request
 // returns a JSON with a `authenticity_token` key, then this will be
 // used to create a hidden input tag with the name set to `authenticity_token`
 // and the value set to the what was provided in the JSON response.
@@ -25,15 +25,10 @@
 // Performance concerns
 // ------------
 //
-// The `CsrfToken` will send a GET request to the `/csrf` endpoint asynchronously
-// so the user will not experience any performance degradation due to the extra
+// The `CsrfToken` will send a GET request to the `/csrf` endpoint asynchronously.
+// The user will not experience any performance degradation due to the extra
 // request. CSRF token generation in Rails also does not touch the database so
 // the load on the Rails server should also be very light.
-//
-// In my opinion, the simplicity of this scheme and the similarity to the methods
-// used in Rails and in Laravel for CSRF protection make this a better solution
-// compared to those where the CSRF token to the browser as an HTTP header or a
-// cookie.
 //
 import { useState, useEffect } from 'react'
 

@@ -1,5 +1,5 @@
 import CsrfToken from '/components/csrf_token'
-import submitJson from '/lib/submit_api'
+import { submitJson } from '/lib/submit_api'
 import Loader from '/components/loader'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
