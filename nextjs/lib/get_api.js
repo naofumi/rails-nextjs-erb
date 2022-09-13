@@ -34,7 +34,7 @@
 //       }
 //     }
 //   })
-export default async function apiGetProps({context, url, options = {}, success}) {
+export async function apiGetProps({context, url, options = {}, success}) {
   const apiHeaders = apiRequestHeaders(context)
 
   const response = await fetch(url, { headers: apiHeaders, ...options })
