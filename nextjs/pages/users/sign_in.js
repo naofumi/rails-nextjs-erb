@@ -11,7 +11,7 @@ export default function SignIn () {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const form = event.target
+    const form = event.currentTarget
     const formData = new FormData(form)
 
     submitJson({

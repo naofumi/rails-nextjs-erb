@@ -33,7 +33,7 @@ export default function EditCategory ({category, breadcrumbs, actionButton}) {
     event.preventDefault()
 
     submitForm({
-      form: event.target,
+      form: event.currentTarget,
       success: (response, jsonResult) => {
         router.push(`/categories/${jsonResult.id}`)
       },

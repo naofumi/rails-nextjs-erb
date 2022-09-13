@@ -34,7 +34,7 @@ export default function NewCategory () {
     event.preventDefault()
 
     submitForm({
-      form: event.target,
+      form: event.currentTarget,
       success: (response, jsonResult) => {
         router.push(`/categories/${jsonResult.id}`)
       },
