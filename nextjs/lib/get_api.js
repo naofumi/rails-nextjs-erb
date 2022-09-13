@@ -60,7 +60,7 @@ export default async function apiGetProps({context, url, options = {}, success})
   } else if (response.status == 401) {
     return {
       redirect: {
-        destination: '/users/login',
+        destination: '/users/sign_in',
         permanent: false,
       },
     }
@@ -139,7 +139,7 @@ export async function apiGetMultiple({context, requests, success}) {
   } else if (jsonResponses.some((jr) => jr.errorStatus == 401)) {
     return {
       redirect: {
-        destination: '/users/login',
+        destination: '/users/sign_in',
         permanent: false,
       },
    }

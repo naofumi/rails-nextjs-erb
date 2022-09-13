@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-export default function Login () {
+export default function SignIn () {
   const router = useRouter()
   const [ errors, setErrors ] = useState([])
 
@@ -14,32 +14,6 @@ export default function Login () {
     const form = event.target
     const formData = new FormData(form)
 
-    // In this case, the URL for the login page in NextJS is `/users/login`
-    // whereas the ERB Version is `/users/sign_in`. We are separating this for
-    // the following reason.
-    //
-    // 1. We cannot send a POST request to a route that is processed in NextJS
-    //    as a page. We get a 405 error when we do this.
-    // 2. This means that if we override the regular Devise login route of
-    //    `user/sign_in` and put a NextJS template in there, loading the page
-    //    is fine but we will not be able to send a POST request to `user/sign_in`.
-    // 3. One way to solve this is to move the Rails APIs to `/api/*` which is
-    //    how we handle most situations. However, with Devise, things are more
-    //    complicated and I am not sure how to handle this.
-    // 4. Therefore, for authentication, I think it is safer to try to preserve
-    //    Devise routes as much as possible, and to have NextJS use different
-    //    routes from the ERB Version.
-    // 5. This is why we have put the login page in `/users/login` instead of
-    //    `users/sign_in`.
-
-
-    // We have whittled this down to the bare essentials. The `action` and `method`
-    // are now set directly as HTML attributes, so we're writing the HTML in
-    // exactly the same way as a regular HTML form. In the `submitJson()` function,
-    // we are only adding stuff that is necessary for working with a JSON API.
-    //
-    // Unfortunately, this page won't work without Javascript. Without Javascript,
-    // the <CsrfToken /> component will not fetch the authenticity token.
     submitJson({
       form: form,
       params: { 'authenticity_token': formData.get('authenticity_token'),
@@ -54,14 +28,6 @@ export default function Login () {
     })
   }
 
-  // Regarding loader animations.
-  //
-  // Controlled React form handling code does quite a bit for loader animations,
-  // but I think we want to keep things simple.
-  //
-  // All we need is for the handleSubmit to show a loader somewhere when called, and
-  // for that loader to disappear after the `submitJson` method returns from await.
-  // It should be dead simple.
   return (
     <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
