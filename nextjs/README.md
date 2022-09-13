@@ -1,22 +1,3 @@
-# About this App
-
-I'm using this to test integration with Sodatech as a BFF.
-
-1. Run this app on local with `yarn dev -p 3000` (port 3000)
-2. Run Sodatech on Docker with `docker compose up`
-
-Future stuff
-1. Get NextJS working on a dev environment in Docker.
-2. Authentication (Cookie relay idea?)
-
-
-# Thoughts on setup
-
-1. NextJS and Rails should both be on respective Docker containers. Otherwise, we have to potentially manage multiple versions of node on the same server.
-2. NextJS should rewrite to Rails in cases where it does not have the path.
-3. NextJS files should generally be on a dedicated sub-path. In most cases, we do not want NextJS paths over Rails paths.
-4. The idea of gradually replacing Rails paths with NextJS paths by using the same URLs and overwriting is appealing at first. The problem is that NextJS paths do not differentiate based on request Method. Therefore, if NextJS has a "/courses" path (a file for this exists in the pages folder) which is intended for GET requests, then we cannot send a POST /courses request since the NextJS path will consume this. This means that we cannot send a POST /courses API request directly to Rails.
-
 # With Docker
 
 This examples shows how to use Docker with Next.js based on the [deployment documentation](https://nextjs.org/docs/deployment#docker-image). Additionally, it contains instructions for deploying to Google Cloud Run. However, you can use any container-based deployment host.
