@@ -36,8 +36,13 @@ export default function Navigation({actionButton}) {
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                  <Link href="/">
+                  <Link href="/categories">
                     <a className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                      Categories
+                    </a>
+                  </Link>
+                  <Link href="/frameworks">
+                    <a className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 text-sm font-medium">
                       Frameworks
                     </a>
                   </Link>
