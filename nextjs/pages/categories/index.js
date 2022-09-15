@@ -10,7 +10,12 @@ export async function getServerSideProps (context) {
     success: (response, categories) => {
       return {
         props: {
-          categories,
+          categories: categories.map((category) => {
+            return {
+              id: category.id,
+              name: category.name
+            }
+          }),
           layout: {
             breadcrumbs: [{name: 'Categories', href: '/'}],
             actionButton: {url: "/categories/new", text: "New Category"}

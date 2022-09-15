@@ -14,7 +14,19 @@ export async function getServerSideProps (context) {
     success: (response, category) => {
       return {
         props: {
-          category,
+          category: {
+            name: category.name,
+            id: category.id,
+            description: category.description,
+            frameworks: category.frameworks.map((framework) => {
+              return {
+                name: framework.name,
+                headline: framework.headline,
+                id: framework.id,
+                header_image: { url: framework.header_image?.url }
+              }
+            })
+          },
           layout: {
             breadcrumbs,
             actionButton: {url: `/categories/${context.params.cid}/edit`, text: "Edit Category"}

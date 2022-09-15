@@ -16,7 +16,11 @@ export async function getServerSideProps (context) {
     success: (response, category) => {
       return {
         props: {
-          category,
+          category: {
+            id: category.id,
+            name: category.name,
+            description: category.description,
+          },
           layout: {
             breadcrumbs,
             actionButton: {url: `/categories/${context.params.cid}`, text: "Show Category"}

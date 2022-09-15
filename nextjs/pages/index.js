@@ -14,8 +14,18 @@ export async function getServerSideProps (context) {
       const [categories, frameworks] = jsonResponses
       return {
         props: {
-          categories: categories,
-          frameworks: frameworks,
+          categories: categories.map((category) => {
+            return {
+              id: category.id,
+              name: category.name,
+            }
+          }),
+          frameworks: frameworks.map((framework) => {
+            return {
+              id: framework.id,
+              name: framework.name,
+            }
+          }),
           layout: {
             breadcrumbs: [{}],
             actionButton: null

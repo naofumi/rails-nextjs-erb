@@ -13,7 +13,18 @@ export async function getServerSideProps (context) {
     success: (response, framework) => {
       return {
         props: {
-          framework,
+          framework: {
+            id: framework.id,
+            name: framework.name,
+            headlink: framework.headline,
+            description: framework.description,
+            originalCreators: framework.original_creators,
+            sourceCodeUrl: framework.source_code_url,
+            languages: framework.languages,
+            relatedTechnologies: framework.related_technologies,
+            releaseYear: framework.release_year,
+            usageStatisticsURL: framework.usage_statistics_url,
+          },
           layout: {
             breadcrumbs,
             actionButton: {url: `/frameworks/${context.params.fid}/edit`, text: "Edit Framework"}
@@ -43,15 +54,15 @@ export default function Framework ({framework, layout}) {
                 <div className="border-t border-gray-200 pt-4">
                   <dt className="font-medium text-gray-900">Original Creators</dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                    { framework.original_creators }
+                    { framework.originalCreators }
                   </dd>
                 </div>
 
                 <div className="border-t border-gray-200 pt-4">
                   <dt className="font-medium text-gray-900">Source Code</dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                    <Link href={framework.source_code_url}>
-                      <a>{framework.source_code_url}</a>
+                    <Link href={framework.sourceCodeUrl}>
+                      <a>{framework.sourceCodeUrl}</a>
                     </Link>
                   </dd>
                 </div>
@@ -66,22 +77,22 @@ export default function Framework ({framework, layout}) {
                 <div className="border-t border-gray-200 pt-4">
                   <dt className="font-medium text-gray-900">Related Technologies</dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                    { framework.related_technologies }
+                    { framework.relatedTechnologies }
                   </dd>
                 </div>
 
                 <div className="border-t border-gray-200 pt-4">
                   <dt className="font-medium text-gray-900">Release year</dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                    { framework.release_year }
+                    { framework.releaseYear }
                   </dd>
                 </div>
 
                 <div className="border-t border-gray-200 pt-4">
                   <dt className="font-medium text-gray-900">Usage statistics</dt>
                   <dd className="mt-2 text-sm text-gray-500">
-                    <Link href={framework.usage_statistics_url}>
-                      <a>{framework.usage_statistics_url}</a>
+                    <Link href={framework.usageStatisticsURL}>
+                      <a>{framework.usageStatisticsURL}</a>
                     </Link>
                   </dd>
                 </div>
