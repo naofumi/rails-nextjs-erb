@@ -17,15 +17,17 @@ export async function getServerSideProps (context) {
       return {
         props: {
           category,
-          breadcrumbs,
-          actionButton: {url: `/categories/${context.params.cid}`, text: "Show Category"}
+          layout: {
+            breadcrumbs,
+            actionButton: {url: `/categories/${context.params.cid}`, text: "Show Category"}
+          }
         }
       }
     }
   })
 }
 
-export default function EditCategory ({category, breadcrumbs, actionButton}) {
+export default function EditCategory ({category, layout}) {
   const router = useRouter()
   const [ errors, setErrors ] = useState([])
 
@@ -44,7 +46,7 @@ export default function EditCategory ({category, breadcrumbs, actionButton}) {
   }
 
   return (
-    <Application breadcrumbs={breadcrumbs} actionButton={actionButton}>
+    <Application layout={layout}>
       <h1 className="text-xl font-semibold text-gray-900">Edit Category</h1>
       <div className="errors text-rose-600">
         {errors.map((error) => error)}

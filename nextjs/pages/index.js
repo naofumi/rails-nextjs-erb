@@ -16,8 +16,10 @@ export async function getServerSideProps (context) {
         props: {
           categories: categories,
           frameworks: frameworks,
-          breadcrumbs: [{}],
-          actionButton: null
+          layout: {
+            breadcrumbs: [{}],
+            actionButton: null
+          }
         }
       }
     }
@@ -25,9 +27,9 @@ export async function getServerSideProps (context) {
 }
 
 
-export default function RootPage ({categories, frameworks, breadcrumbs, actionButton}) {
+export default function Index ({categories, frameworks, layout}) {
   return (
-    <Application breadcrumbs={breadcrumbs} actionButton={actionButton} >
+    <Application layout={layout} >
       <div className="bg-white">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
           <div className="text-center">

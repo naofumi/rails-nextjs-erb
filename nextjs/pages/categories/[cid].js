@@ -15,17 +15,19 @@ export async function getServerSideProps (context) {
       return {
         props: {
           category,
-          breadcrumbs,
-          actionButton: {url: `/categories/${context.params.cid}/edit`, text: "Edit Category"}
+          layout: {
+            breadcrumbs,
+            actionButton: {url: `/categories/${context.params.cid}/edit`, text: "Edit Category"}
+          }
         }
       }
     }
   })
 }
 
-export default function Category ({category, breadcrumbs, actionButton}) {
+export default function Category ({category, layout}) {
   return (
-    <Application breadcrumbs={breadcrumbs} actionButton={actionButton}>
+    <Application layout={layout}>
       <div className="bg-white">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
           <div className="text-center">

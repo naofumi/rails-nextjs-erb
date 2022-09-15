@@ -3,7 +3,7 @@ import Application from '/components/layout/application'
 /* This example requires Tailwind CSS v2.0+ */
 function About() {
   return (
-    <Application breadcrumbs={[]} actionButton={{url: '', text: ''}}>
+    <Application layout={{ breadcrumbs:[], actionButton: {url: '', text: ''} }} >
       <div className="bg-white">
         <div className="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
           <div className="text-center">

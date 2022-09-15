@@ -11,8 +11,10 @@ export async function getServerSideProps (context) {
       return {
         props: {
           categories,
-          breadcrumbs: [{name: 'Categories', href: '/'}],
-          actionButton: {url: "/categories/new", text: "New Category"}
+          layout: {
+            breadcrumbs: [{name: 'Categories', href: '/'}],
+            actionButton: {url: "/categories/new", text: "New Category"}
+          }
         }
       }
     }
@@ -20,9 +22,9 @@ export async function getServerSideProps (context) {
 }
 
 
-export default function Categories ({categories, breadcrumbs, actionButton}) {
+export default function Categories ({categories, layout}) {
   return (
-    <Application breadcrumbs={breadcrumbs} actionButton={actionButton} >
+    <Application layout={layout} >
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">

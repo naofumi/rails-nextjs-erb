@@ -14,17 +14,19 @@ export async function getServerSideProps (context) {
       return {
         props: {
           framework,
-          breadcrumbs,
-          actionButton: {url: `/frameworks/${context.params.fid}/edit`, text: "Edit Framework"}
+          layout: {
+            breadcrumbs,
+            actionButton: {url: `/frameworks/${context.params.fid}/edit`, text: "Edit Framework"}
+          }
         }
       }
     }
   })
 }
 
-export default function Framework ({framework, breadcrumbs, actionButton}) {
+export default function Framework ({framework, layout}) {
   return (
-    <Application breadcrumbs={breadcrumbs} actionButton={actionButton}>
+    <Application layout={layout}>
       <div id={`framework_${framework.id}`}>
         <div className="bg-white">
           <div className="max-w-2xl mx-auto py-12 px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8 lg:grid-cols-2">

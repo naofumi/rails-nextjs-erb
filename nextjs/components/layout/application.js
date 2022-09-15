@@ -3,7 +3,8 @@ import Breadcrumbs from '/components/breadcrumbs'
 import Loader from '/components/loader'
 
 
-export default function Application({children, breadcrumbs, actionButton}) {
+export default function Application({children, layout}) {
+  const { breadcrumbs, actionButton } = layout;
   return (
     <>
       <div className="relative">

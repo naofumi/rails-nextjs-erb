@@ -45,7 +45,7 @@ export default function NewCategory () {
   }
 
   return (
-    <Application breadcrumbs={breadcrumbs} actionButton={actionButton}>
+    <Application layout={{breadcrumbs, actionButton}}>
       <h1 className="text-xl font-semibold text-gray-900">New Category</h1>
       <div className="errors text-rose-600">
         {errors.map((error) => error)}
