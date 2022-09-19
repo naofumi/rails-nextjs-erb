@@ -52,9 +52,9 @@ export default function Index ({categories, frameworks, layout}) {
         </div>
       </div>
 
-      <div class="flex flex-row">
-        <div class="basis-1/2 mr-5">
-          <h2 class="text-lg font-semibold text-indigo-600">Categories</h2>
+      <div className="flex flex-row">
+        <div className="basis-1/2 mr-5">
+          <h2 className="text-lg font-semibold text-indigo-600">Categories</h2>
           <table className="min-w-full divide-y divide-gray-300">
             <thead>
               <tr>
@@ -71,8 +71,8 @@ export default function Index ({categories, frameworks, layout}) {
           </table>
         </div>
 
-        <div class="basis-1/2 ml-5">
-          <h2 class="text-lg font-semibold text-indigo-600">Frameworks</h2>
+        <div className="basis-1/2 ml-5">
+          <h2 className="text-lg font-semibold text-indigo-600">Frameworks</h2>
           <table className="min-w-full divide-y divide-gray-300">
             <thead>
               <tr>
