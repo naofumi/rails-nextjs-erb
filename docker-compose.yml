@@ -23,7 +23,8 @@ services:
   #     - '4306:3306'
 
   web:
-    build: .
+    build:
+      dockerfile: Dockerfile.development
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/app
