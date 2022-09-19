@@ -36,7 +36,6 @@
 //   })
 export async function apiGetProps({context, url, options = {}, success}) {
   const apiHeaders = apiRequestHeaders(context)
-
   const response = await fetch(url, { headers: apiHeaders, ...options })
 
   if (response.status == 200) {
@@ -141,17 +140,27 @@ export async function apiGetMultiple({context, requests, success}) {
 }
 
 function apiRequestHeaders(context) {
-  // use spread assignment to remove any headers that you
-  // do not want to pass through.
-  // https://www.cloudhadoop.com/2020/02/different-ways-of-remove-property-in.html
-  const { ...browserHeaders } = context.req.headers
+  const ignoredReqestHeaders = ['host']
+  let passedToServer = {}
 
-  return { ...browserHeaders, ...{accept: 'application/json'} }
+  // pass through headers
+  const headers = context.req.headers
+  Object.keys(context.req.headers).forEach((key) => {
+    if (ignoredReqestHeaders.includes(key)) { return }
+
+    passedToServer[key] = headers[key]
+  })
+
+  // additional headers to set/override
+  passedToServer['accept'] = 'application/json'
+
+  return passedToServer
 }
 
 function setBrowserResponseHeaders(headers, context) {
-  const ignoredResponseHeaders = ['content-type', 'content-encoding']
+  const ignoredResponseHeaders = ['content-type', 'content-encoding', 'transfer-encoding']
 
+  // pass through headers
   headers.forEach((value, key) => {
     if (ignoredResponseHeaders.includes(key)) { return }
 

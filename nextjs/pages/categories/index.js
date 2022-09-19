@@ -5,7 +5,7 @@ import { apiGetProps } from '/lib/get_api'
 export async function getServerSideProps (context) {
   return apiGetProps({
     context: context,
-    url: 'http://web:3000/categories',
+    url: 'https://rails-nextjs.fly.dev/categories',
     options: {},
     success: (response, categories) => {
       return {

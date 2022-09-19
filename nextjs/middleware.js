@@ -12,7 +12,7 @@ export function middleware(request) {
   if ( requestIsGet(request) ) { return }
   if ( requestPathStartsWithApi(request) ) { return }
 
-  return NextResponse.rewrite('http://web:3000' + request.nextUrl.pathname
+  return NextResponse.rewrite('https://rails-nextjs.fly.dev' + request.nextUrl.pathname
                                                 + request.nextUrl.search)
 }
 

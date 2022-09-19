@@ -11,7 +11,7 @@ export async function getServerSideProps (context) {
 
   return apiGetProps({
     context: context,
-    url: `http://web:3000/categories/${context.params.cid}`,
+    url: `https://rails-nextjs.fly.dev/categories/${context.params.cid}`,
     options: {},
     success: (response, category) => {
       return {

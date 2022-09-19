@@ -8,7 +8,7 @@ export async function getServerSideProps (context) {
 
   return apiGetProps({
     context: context,
-    url: `http://web:3000/frameworks/${context.params.fid}`,
+    url: `https://rails-nextjs.fly.dev/frameworks/${context.params.fid}`,
     options: {},
     success: (response, framework) => {
       return {

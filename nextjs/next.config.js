@@ -1,7 +1,7 @@
 module.exports = {
   output: 'standalone',
   images: {
-    domains: ['localhost', 'tailwindui.com'],
+    domains: ['localhost', 'tailwindui.com', 'rails-nextjs.fly.dev'],
   },
 
   // https://nextjs.org/docs/migrating/incremental-adoption#rewrites
@@ -12,7 +12,7 @@ module.exports = {
       fallback: [
         {
           source: '/:path*',
-          destination: `http://web:3000/:path*`,
+          destination: `https://rails-nextjs.fly.dev/:path*`,
         },
       ],
     }
