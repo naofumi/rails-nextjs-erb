@@ -1,7 +1,7 @@
 module.exports = {
   output: 'standalone',
   images: {
-    domains: ['localhost', 'tailwindui.com', 'rails-nextjs.fly.dev'],
+    domains: ['localhost', 'tailwindui.com', 'rails-nextjs.fly.dev', 'rails-nextjs-erb.vercel.app'],
   },
 
   // https://nextjs.org/docs/migrating/incremental-adoption#rewrites
